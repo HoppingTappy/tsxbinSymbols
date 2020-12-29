@@ -50,7 +50,7 @@ void main(void) {
 
 	int nsf2Flags = GetCurrentByte();
 	string nsf2FlagsStr = "NSF2 Flags";
-
+	BOOL metaFlag;
 	if (nsf2Flags&0x10){
 		nsf2FlagsStr+="|IRQ Support";
 	}
@@ -62,6 +62,9 @@ void main(void) {
 	}
 	if (nsf2Flags&0x80){
 		nsf2FlagsStr+="|Metadata";
+		metaFlag = TRUE;
+	}else{
+		metaFlag = FALSE;
 	}
 
 	$char	nsf2FlagsStr;
@@ -70,7 +73,7 @@ void main(void) {
 	int metaDataStartPos = romSize+0x80;
 
 	$char	romSize[3];
-	if (version==2){
+	if (version==2 & metaFlag){
 		$char	prgRom[romSize];
 		while (1){
 			int length = GetCurrentDword();
