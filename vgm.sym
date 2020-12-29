@@ -1,0 +1,330 @@
+
+
+typedef int bool;
+const bool true=1;
+const bool false=0;
+
+
+void main(void);
+int getStrLength( int addr );
+
+
+main();
+return;
+
+void main(void) {
+	$char	ident[4];
+	$long	EoF_offset;
+	int vgmVersion = GetCurrentDword();
+	int headerEndAddr;
+	int	dataBlockStartAddr = 0x40;
+
+//	switch (vgmVersion){
+//		case 0x110:
+//		case 0x150:
+//			dataBlockStartAddr = 0x3F + 1;
+//			break;
+//		case 0x160:
+//			dataBlockStartAddr = 0x7F + 1;
+//			break;
+//		case 0x161:
+//			dataBlockStartAddr = 0xBF + 1;
+//			break;
+//
+//
+//		default:
+//			dataBlockStartAddr = 0x3F + 1;
+//			break;
+//	}
+
+	$long	Version;
+	$long	SN76489_clock;
+	$long	YM2413_clock;
+	$long	GD3_offset;
+	$long	Total_samples;
+	$long	Loop_offset;
+	$long	Loop_samples;
+
+	if (vgmVersion >= 0x101){
+		$long	Rate;
+	}
+	if (vgmVersion >= 0x110){
+		$short	SN_FB;
+		$char	SNW;
+	}
+
+	if (vgmVersion >= 0x110){
+		if (vgmVersion >= 0x151){
+			$char	SF;
+		}else{
+			$char	unused;
+		}
+	}
+
+	if (vgmVersion >= 0x110){
+		$long	YM2612_clock;
+		$long	YM2151_clock;
+	}
+	if (vgmVersion >= 0x150){
+
+		dataBlockStartAddr = GetCurrentDword() + GetCurrentOffset();
+		$long	VGM_data_offset;
+//		MessageBox( tostr(dataBlockStartAddr) );
+	}
+
+	if (vgmVersion >= 0x151){
+
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Sega_PCM_clock;	}
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	SPCM_Interface; }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	RF5C68_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YM2203_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YM2608_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YM2610_B_clock; }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YM3812_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YM3526_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Y8950_clock;    }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YMF262_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YMF278B_clock;  }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YMF271_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	YMZ280B_clock;  }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	RF5C164_clock;  }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	PWM_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	AY8910_clock;   }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	AYT;            }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	AY_Flags[3];    }
+		if (vgmVersion >= 0x160){
+
+			if (dataBlockStartAddr > GetCurrentOffset() ){ $char	VM;		}
+			if (dataBlockStartAddr > GetCurrentOffset() ){ $char	unused; }
+			if (dataBlockStartAddr > GetCurrentOffset() ){ $char	LB;     }
+		}else{
+			if (dataBlockStartAddr > GetCurrentOffset() ){ $char	unused[3]; }
+		}
+
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	LM; }
+
+	}
+
+	if (vgmVersion >= 0x161){
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	GB_DMG_clock;		}
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	NES_APU_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	MultiPCM_clock;     }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	uPD7759_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	OKIM6258_clock;     }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	OF;                 }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	KF;                 }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	CF;                 }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	unused;             }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	OKIM6295_clock;     }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	K051649_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	K054539_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	HuC6280_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	C140_clock;         }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	K053260_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Pokey_clock;        }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	QSound_clock;       }
+	}
+//		$char	unused[4];
+	if (vgmVersion >= 0x171){
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	SCSP_clock; }
+	}
+
+	if (vgmVersion >= 0x170){
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	ExtraHeaderOffset; }
+	}
+	if (vgmVersion >= 0x171){
+
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	WonderSwan_clock		}
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Virtual_Boy_VSU_clock;  }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	SAA1099_clock;          }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	ES5503_clock;           }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	ES5505_ES5506_clock;    }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	ES5503_Channels;        }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	ES5505_6_Channels;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	C352_Clock_Divider;     }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	reserved;               }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Seta_X1-010_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Namco_C352_clock;       }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Irem_GA20_clock;        }
+
+	}
+
+	$char	reserved[dataBlockStartAddr - GetCurrentOffset()];
+
+
+
+	bool endFlag = false;
+
+	// data block
+	while(endFlag != true){
+		if ( ( GetCurrentByte()&(~0x0f) ) == 0x30 ){
+			$char	0x3X;
+			$char	data;
+		}else if (( GetCurrentByte()&(~0x0f) ) == 0x40 ) {
+			$char	reserved_0x4X;
+			$char	data;
+		}else if (( GetCurrentByte()&(~0x0f) ) == 0x70 ) {
+			$char	wait_n1_samples__n_can_range_from_0_to_15;
+
+		}else{
+			switch(GetCurrentByte()){
+				case 0x4f:	// dd    : Game Gear PSG stereo, write dd to port 0x06
+					$char	Game_Gear_PSG_stereo__write_dd_to_port_0x06;
+					$char	__data__;
+					break;
+				case 0x50:	// dd    : PSG (SN76489/SN76496) write value dd
+					$char	DCSG_Write;
+					$char	__data__;
+					break;
+				case 0x51:	// aa dd : YM2413, write value dd to register aa
+					break;
+				case 0x52:	// aa dd : YM2612 port 0, write value dd to register aa
+					$char	YM2612_port_0_write;
+					$char	__addr__;
+					$char	__data__;
+					break;
+				case 0x53:	// aa dd : YM2612 port 1, write value dd to register aa
+					$char	YM2612_port_1_write;
+					$char	__addr__;
+					$char	__data__;
+					break;
+				case 0x54:	// aa dd : YM2151, write value dd to register aa
+					break;
+				case 0x55:	// aa dd : YM2203, write value dd to register aa
+					break;
+				case 0x56:	// aa dd : YM2608 port 0, write value dd to register aa
+					break;
+				case 0x57:	// aa dd : YM2608 port 1, write value dd to register aa
+					break;
+				case 0x58:	// aa dd : YM2610 port 0, write value dd to register aa
+					break;
+				case 0x59:	// aa dd : YM2610 port 1, write value dd to register aa
+					break;
+				case 0x5A:	// aa dd : YM3812, write value dd to register aa
+					break;
+				case 0x5B:	// aa dd : YM3526, write value dd to register aa
+					break;
+				case 0x5C:	// aa dd : Y8950, write value dd to register aa
+					break;
+					break;
+				case 0x5D:	// aa dd : YMZ280B, write value dd to register aa
+					break;
+				case 0x5E:	// aa dd : YMF262 port 0, write value dd to register aa
+					break;
+				case 0x5F:	// aa dd : YMF262 port 1, write value dd to register aa
+					break;
+				case 0x61:	// nn nn : Wait n samples, n can range from 0 to 65535 (approx 1.49
+
+					$char	Wait;
+					$short	__sample__;
+					break;
+							// seconds). Longer pauses than this are represented by multiple
+							// wait commands.
+				case 0x62:	// wait 735 samples (60th of a second), a shortcut for
+					break;
+							// 0x61 0xdf 0x02
+				case 0x63:	// wait 882 samples (50th of a second), a shortcut for
+					break;
+							// 0x61 0x72 0x03
+				case 0x66:	//       : end of sound data
+					$char	end_of_sound_data;
+					endFlag = true;
+					break;
+				case 0x67:	// ...   : data block: see below
+					break;
+				case 0x68:	// ...   : PCM RAM write: see below
+					break;
+		//0x7n       : wait n+1 samples, n can range from 0 to 15.
+		//0x8n       : YM2612 port 0 address 2A write from the data bank, then wait 
+		//             n samples; n can range from 0 to 15. Note that the wait is n,
+		//             NOT n+1. (Note: Written to first chip instance only.)
+		//0x90-0x95  : DAC Stream Control Write: see below
+				case 0xA0:	// aa dd : AY8910, write value dd to register aa
+					break;
+				case 0xB0:	// aa dd : RF5C68, write value dd to register aa
+					break;
+				case 0xB1:	// aa dd : RF5C164, write value dd to register aa
+					break;
+				case 0xB2:	// ad dd : PWM, write value ddd to register a (d is MSB, dd is LSB)
+					break;
+				case 0xB3:	// aa dd : GameBoy DMG, write value dd to register aa
+					break;
+				case 0xB4:	// aa dd : NES APU, write value dd to register aa
+					break;
+				case 0xB5:	// aa dd : MultiPCM, write value dd to register aa
+					break;
+				case 0xB6:	// aa dd : uPD7759, write value dd to register aa
+					break;
+				case 0xB7:	// aa dd : OKIM6258, write value dd to register aa
+					break;
+				case 0xB8:	// aa dd : OKIM6295, write value dd to register aa
+					break;
+				case 0xB9:	// aa dd : HuC6280, write value dd to register aa
+					break;
+				case 0xBA:	// aa dd : K053260, write value dd to register aa
+					break;
+				case 0xBB:	// aa dd : Pokey, write value dd to register aa
+					break;
+				case 0xC0:	// aaaa dd : Sega PCM, write value dd to memory offset aaaa
+					break;
+				case 0xC1:	// aaaa dd : RF5C68, write value dd to memory offset aaaa
+					break;
+				case 0xC2:	// aaaa dd : RF5C164, write value dd to memory offset aaaa
+					break;
+				case 0xC3:	// cc aaaa : MultiPCM, write set bank offset aaaa to channel cc
+					break;
+				case 0xC4:	// mmll rr : QSound, write value mmll to register rr (mm - data MSB, ll - data LSB)
+					break;
+				case 0xD0:	// pp aa dd : YMF278B port pp, write value dd to register aa
+					break;
+				case 0xD1:	// pp aa dd : YMF271 port pp, write value dd to register aa
+					break;
+				case 0xD2:	// pp aa dd : SCC1 port pp, write value dd to register aa
+					break;
+				case 0xD3:	// pp aa dd : K054539 write value dd to register ppaa
+					break;
+				case 0xD4:	// pp aa dd : C140 write value dd to register ppaa
+					break;
+				case 0xE0:	// dddddddd : seek to offset dddddddd (Intel byte order) in PCM data bank
+					break;
+			}
+		}
+	}
+
+	// GD3 Tags
+
+	$char	GD3[4];
+	$long	GD3_Version;
+	$long	GD3_dataSize;
+
+//	MessageBox();
+	int strLength;
+	strLength = getStrLength( GetCurrentOffset() );		$short	Track_name_ENG[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Track_name_JPN[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Game_name_ENG[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Game_name_JPN[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	System_name_ENG[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	System_name_JPN[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Author_name_ENG[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Author_name_JPN[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Date[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Converted_name[ strLength ];
+	strLength = getStrLength( GetCurrentOffset() );		$short	Notes[ strLength ];
+
+//"Date of game's release written in the form yyyy/mm/dd, or just yyyy/mm or yyyy if month and day is not known\0"
+//"Name of person who converted it to a VGM file.\0"
+//"Notes\0"
+
+}
+
+int getStrLength( int addr){
+
+	int strLength = 0;
+
+	for (int i = 0; GetWord( addr + i*2); i++){
+		strLength = i+1;
+	}
+	strLength++;
+	return strLength;
+}
+

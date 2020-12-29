@@ -1,0 +1,87 @@
+#include "typedef.h"
+
+void main(void);
+
+main();
+return;
+
+void main(void) {
+
+	$char	NESM[5];
+	int version = GetCurrentByte();
+
+	$char	VersionNumber;
+	$char	TotalSongs;
+	$char	StartingSong;
+	$short	LoadAddress;
+	$short	InitAddress;
+	$short	PlayAddress;
+
+	$char	NameOfSong[32];
+	$char	Artist[32];
+	$char	Copyright[32];
+	$short	PlaySpeedNtsc;
+	$char	BankswitchInitValues[8];
+	$short	PlaySpeedPal;
+	$char	PAL_NTSC_Bits;
+
+	int exChipBit = GetCurrentByte();
+	string exChipInfo = "exChips";
+	if (exChipBit&0x01){
+		exChipInfo+="|VRC6";
+	}
+	if (exChipBit&0x02){
+		exChipInfo+="|VRC7";
+	}
+	if (exChipBit&0x04){
+		exChipInfo+="|FDS";
+	}
+	if (exChipBit&0x08){
+		exChipInfo+="|MMC5";
+	}
+	if (exChipBit&0x10){
+		exChipInfo+="|N163";
+	}
+	if (exChipBit&0x20){
+		exChipInfo+="|S5B";
+	}
+
+	$char	exChipInfo;
+
+	int nsf2Flags = GetCurrentByte();
+	string nsf2FlagsStr = "NSF2 Flags";
+
+	if (nsf2Flags&0x10){
+		nsf2FlagsStr+="|IRQ Support";
+	}
+	if (nsf2Flags&0x20){
+		nsf2FlagsStr+="|Non-Returning INIT";
+	}
+	if (nsf2Flags&0x40){
+		nsf2FlagsStr+="|Suppressed PLAY";
+	}
+	if (nsf2Flags&0x80){
+		nsf2FlagsStr+="|Metadata";
+	}
+
+	$char	nsf2FlagsStr;
+
+	int romSize = (GetCurrentDword()&0xffffff);
+	int metaDataStartPos = romSize+0x80;
+
+	$char	romSize[3];
+	if (version==2){
+		$char	prgRom[romSize];
+		while (1){
+			int length = GetCurrentDword();
+			$long	length;
+
+			if (FStrCmp(GetCurrentOffset(), 4, "NEND")==0){
+				break;
+			}
+			$char	chunkName[4];
+			$char	data[length];
+		}
+
+	}
+}

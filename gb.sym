@@ -1,0 +1,25 @@
+#include "typedef.h"
+
+void main(void);
+
+main();
+return;
+
+void main(void) {
+	$char	unknown[256];
+	$char	Entry_Point[4];
+	$char	Nintendo_Logo[48];
+	$char	Title[11];
+	$char	Manufacturer_Code[4];
+	$char	CGB_Flag;
+	$char	New_Licensee_Code[2];
+	$char	SGB_Flag;
+	$char	Cartridge_Type;
+	$char	ROM_Size;
+	$char	RAM_Size;
+	$char	Destination_Code;
+	$char	Old_Licensee_Code;
+	$char	Mask_ROM_Version_number;
+	$char	Header_Checksum;
+	$char	Global_Checksum[2];
+}

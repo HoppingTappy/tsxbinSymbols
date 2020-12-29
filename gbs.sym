@@ -1,0 +1,23 @@
+
+#include "typedef.h"
+
+void main(void);
+
+main();
+return;
+
+void main(void) {
+	$char	Identifier[3];
+	$char	Version;
+	$char	NumberOfSongs;
+	$char	FirstSong;
+	$short	LoadAddress;
+	$short	InitAddress;
+	$short	PlayAddress;
+	$short	StackPointer;
+	$char	TimerModulo;
+	$char	TimerControl;
+	$char	Title[32];
+	$char	Author[32];
+	$char	Copyright[32];
+}

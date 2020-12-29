@@ -1,0 +1,28 @@
+
+#include "typedef.h"
+
+void main(void);
+
+main();
+return;
+
+void main(void) {
+
+	$char	HESM[4];
+	$char	バージョン;
+	$char	開始曲番号;
+	$short	曲設定アドレス;
+	$char	MPR0_初期バンク;
+	$char	MPR1_初期バンク;
+	$char	MPR2_初期バンク;
+	$char	MPR3_初期バンク;
+	$char	MPR4_初期バンク;
+	$char	MPR5_初期バンク;
+	$char	MPR6_初期バンク;
+	$char	MPR7_初期バンク;
+	$int	DATA;
+	$int	dataの長さ;
+	$int	ロードアドレス;
+	$int	予約;
+
+}

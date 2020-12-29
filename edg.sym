@@ -1,0 +1,63 @@
+
+void main(void);
+
+
+main();
+return;
+
+void main(void) {
+
+
+	
+	if (FStrCmp(0, 5, "EDGE2") == 0){
+	}else{
+
+		$char	header[10];
+		int xSize = GetCurrentDword();
+		$int	横幅;
+		int ySize = GetCurrentDword();
+		$int	縦幅;
+		int layerCount = GetCurrentWord();
+		$short	レイヤ数;
+		$char	透明色;
+
+	//	for (int i = 0; i<256; i++){
+	////		$char	R;
+	////		$char	G;
+	////		$char	B;
+	//		$char	RGB[3];
+	//	}
+
+		$char	パレットRGB[3*256];
+
+
+		for (int layerCounter = 0; layerCounter<layerCount; layerCounter++){
+
+
+			$char	レイヤ名[80];
+			$char	表示・非表示とか;
+
+			int nImageSize = xSize * ySize;
+			int comp_max = GetCurrentDword();
+
+			$int	comp_max;
+
+			int		position[comp_max];
+			int		length[comp_max];
+			char	value[comp_max];
+
+			for (int i = 0; i<comp_max; i++){
+			
+				$int	position;
+				$int	length;
+				$char	value;
+			}
+
+
+			int	src_max = GetCurrentDword();
+			$int	src_max;
+
+			$char	Data[src_max];
+		}
+	}
+}

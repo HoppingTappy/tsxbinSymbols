@@ -1,0 +1,89 @@
+
+#maxloop -1
+#include "typedef.h"
+
+void main(void);
+
+
+
+
+main();
+return;
+
+void main(void) {
+	int		morph_count;
+//	int		i = 0;
+	int		name_size;
+	int		data_count;
+	int		num_bloks;
+	string	format_name;//"Gamebryo File Format, Version "
+	ulong	user_version2;
+
+	format_name = "Gamebryo File Format, Version ";
+
+	if (FStrCmp( 0, 0, format_name)==0){
+		$BYTE	copy_light[strlen(format_name)];
+	}
+
+
+
+	name_size = GetCurrentOffset();
+	while(GetByte(name_size)!=0x0A){
+//		$BYTE	VERSION;
+		name_size++;
+	}
+	$char	VERSION[(name_size+1)-strlen(format_name)];
+	$ulong	version_hex;
+	$BYTE	endian_type;
+	$ulong	user_version;
+	num_bloks = GetCurrentDword();
+//	MessageBox(num_bloks);
+	$ulong	Num_Blocks;
+	user_version2 = GetCurrentDword();
+	$ulong	user_version2;
+	name_size = GetCurrentByte();
+	$BYTE	ï∂éöêî;
+	$BYTE	ï∂éö[name_size];
+	name_size = GetCurrentByte();
+	$BYTE	ï∂éöêî;
+	$BYTE	ï∂éö[name_size];
+	name_size = GetCurrentByte();
+	$BYTE	ï∂éöêî;
+	$BYTE	ï∂éö[name_size];
+
+	if ( user_version2 == 130 ){
+	name_size = GetCurrentByte();
+	$BYTE	ï∂éöêî;
+	$BYTE	Max_Filepath[name_size];
+	}
+	data_count = GetCurrentByte();
+	$ushort data_count;
+	for (int i = 0; i < data_count; i++){
+
+		name_size = GetCurrentByte();
+		$ulong	ï∂éöêî;
+		$BYTE	Block_Types[name_size];
+	}
+	for (int i = 0; i < num_bloks; i++){
+		$ushort	Block_Type_Index;
+//		$ushort	test;
+	}
+	for (int i = 0; i < num_bloks; i++){
+		$ulong	Block_Size;
+//		$ushort	test;
+	}
+	data_count = GetCurrentDword();
+	$ulong	Num_String;
+	$ulong	Max_String;
+
+	for (int i = 0; i < data_count; i++){
+
+		name_size = GetCurrentDword();
+		$ulong	ï∂éöêî;
+		$BYTE	ï∂éö[name_size];
+	}
+	data_count = GetCurrentDword();
+	$ulong	Num_Groups;
+	for (int i = 0; i < data_count; i++){
+		$ulong	Groups;
+	}

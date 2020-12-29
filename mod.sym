@@ -1,0 +1,46 @@
+
+#include "typedef.h"
+#bigendian
+
+void main(void);
+
+main();
+return;
+
+void main(void) {
+
+	int SongLengthInPatterns;
+
+	$char	SongName[20];
+//	$char	SampleDescriptionRecord[20];
+
+	for (int i = 0; i<31; i++){
+
+		$char	SampleName[22];
+		$short	SampleLength;
+
+
+		$char	SampleFinetune;
+		$char	SampleVolume;
+		$short	SampleLoopStart;
+		$short	SampleLoopLength;
+	}
+
+	SongLengthInPatterns = GetCurrentByte();
+
+
+	$char	SongLengthInPatterns;
+	$char	RestartByteForSongLooping;
+	$char	PatternPlaySequences[128];
+
+	$char	ID[4];
+
+
+	for	(int i = 0; i<SongLengthInPatterns; i++) {
+
+		$long	note[8*64];
+	}
+//	$short	Instrument_Period;
+//	$char	UpperNibble;
+//	$char	SpecialEffectsData;
+}

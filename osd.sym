@@ -1,0 +1,42 @@
+
+#maxloop -1
+#include "typedef.h"
+
+void main(void);
+
+
+
+
+main();
+return;
+
+void main(void) {
+	int		morph_count;
+//	int		i = 0;
+	int		name_size;
+	int		data_count;
+
+	$DWORD	HEADER;
+	$DWORD	VERSION;
+	morph_count = GetCurrentByte();
+	$DWORD	モーフ数;
+
+
+
+	for (int i = 0; i < morph_count; i++){
+		name_size = GetCurrentByte();
+		$BYTE	データ名のバイト数;
+		$BYTE	名前[name_size];
+
+		data_count = GetCurrentWord();
+		$WORD		データの数;
+//		for (int j = 0; j < data_count; j++)
+//		{
+//			$WORD	頂点ID;
+//			$float	X;
+//			$float	Y;
+//			$float	Z;
+//		}
+		$BYTE	DATA[data_count * 14];
+	}
+}

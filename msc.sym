@@ -1,0 +1,65 @@
+
+#include "typedef.h"
+
+void main(void);
+
+
+main();	
+return;
+
+void main(void) {
+
+	$char	name[4];
+	$short	size;
+
+	int musicNum = GetCurrentWord();
+
+	$short	musicNum;
+
+	$char	dummy[8];
+
+
+
+
+	for (int j=0; j<musicNum; j++){
+
+
+
+		int musicSize = GetCurrentWord();
+
+		$short	musicSize;
+
+		int partNum = GetCurrentWord();
+
+		$short	partNum;
+		$short	nallSize;
+		$char	barlin;		//04	横に表示する小節の数(1～4)
+		$char	beat;		//00	開始時の小節内のノートをずらす数
+		$char	name[24];	//	'untitled\0' 以降16バイト'\0'
+
+
+		for (int i=0; i<partNum; i++){
+
+
+			$short	length;
+			$char	flag;
+			$char	vSize;
+
+
+			int cmd;
+
+			while (1){
+
+				cmd = GetCurrentByte();
+				if (cmd == 0x00){
+					$char	end[2];
+					break;
+				}else if (cmd == 0x01){
+					$char	臨時パート調号[2];
+				}else{
+					$char	unknown[2];
+				}
+			}
+		}
+	}
+}

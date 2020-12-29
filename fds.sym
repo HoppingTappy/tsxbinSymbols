@@ -1,0 +1,97 @@
+
+#include "typedef.h"
+
+void main(void);
+
+struct header {
+	char	ID[4];
+	char	numberOfDiskSides;
+	char	zeroFilled[11];
+};
+
+struct block1 {
+	char	blockCodeRawByte;
+	char	diskVerificationLegitimateDiskImage[14];
+	char	manufacturerCode;
+	char	gameName[3];
+	char	gameType;
+	char	gameVersion;
+	char	sideNumber;
+	char	diskNumber;
+	char	diskType;
+	char	unknown;
+	char	bootReadFileCode;
+	char	unknown[5];
+	char	manufacturingDate[3];
+	char	countryCode;
+	char	unknown;
+	char	unknown;
+	char	unknown[2];
+	char	unknown[5];
+	char	rewrittenDisk[3];
+	char	unknown;
+	char	unknown;
+	char	diskWriterSerialNumber[2];
+	char	unknown;
+	char	diskRewriteCount;
+	char	actualDiskSide;
+	char	unknown;
+	char	price;
+//	char	crc[2];
+};
+
+struct block2 {
+	char	blockNum;
+	char	fileAmount;
+};
+
+struct block3 {
+	char	blockNum;
+	char	fileNumber;
+	char	fileIndicateCode;
+	char	fileName[8];
+	short	fileAddress;
+	short	fileSize;
+	char	kindOfFile;
+};
+
+//struct block4 {
+//	char	blockNum;
+//	char	data[size];
+//};
+
+main();
+return;
+
+void main(void) {
+
+	long startOffset;
+	long endOffset;
+
+	$header		header;
+
+	for (int i = 0; i < header.numberOfDiskSides; i++) {
+
+		startOffset = GetCurrentOffset();
+
+		$block1		block1;
+		$block2		block2;
+
+
+		for (int j = 0; j < block2.fileAmount; j++) {
+
+
+			$block3		block3;
+
+			$char	blockNum;
+			$char	data[block3.fileSize];
+
+
+		}
+
+		endOffset = GetCurrentOffset();
+		$char	data[65500 - (endOffset-startOffset)];
+
+	}
+}
+

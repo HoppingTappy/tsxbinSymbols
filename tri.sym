@@ -1,0 +1,140 @@
+
+#include "typedef.h"
+
+void main(void);
+
+
+main();
+return;
+
+void main(void) {
+	int		shape_count;
+	int		morph_count;
+//	int		i = 0;
+	int		name_size;
+	int		data_count;
+//	string		header;
+	DWORD		header;
+//	for (i = 0; i < 4; i++){
+//		header += GetByte(i);
+//	}
+	header = GetCurrentDword();
+//	for (i = 0; i < 4; i++){
+//		header += GetByte(i);
+//		header = header<<8;
+//	}
+
+//	MessageBox(tohex(header));
+
+	switch (header){
+		case	0x54524950:// PIRT
+//			MessageBox("UNKO");
+			$BYTE	HEADER[4];
+			shape_count = GetCurrentWord();
+			$WORD	shape_count;
+
+			for (int i = 0; i < shape_count; i++){
+				name_size = GetCurrentByte();
+				$BYTE	データ名のバイト数;
+				$BYTE	名前[name_size];
+
+				morph_count = GetCurrentWord();
+				$WORD	モーフ数;
+
+				for (int j = 0;j < morph_count; j++) {
+					name_size = GetCurrentByte();
+					$BYTE	データ名のバイト数;
+					$BYTE	名前[name_size];
+
+
+					$DWORD		かける数;
+					data_count = GetCurrentWord();
+					$WORD		データの数;
+					$BYTE	DATA[data_count * 8];
+				}
+			}
+			break;
+		case	0x52545246:// PIRT
+//			MessageBox("UNKO");
+			uint	vertexNum;
+			$BYTE	HEADER[8];
+			vertexNum = GetCurrentDword();
+			$DWORD	vertexNum;		// 1
+			$DWORD	faceNum;		// 2
+
+			$DWORD	nazo;		// 3
+			$DWORD	nazo;		// 4
+			$DWORD	nazo;		// 5
+
+			$DWORD	uvNum;			// 6
+			$DWORD	nazo;		// 7
+			$DWORD	morphNum;
+			$DWORD	addMorphNum;
+			$DWORD	addVertexNum;
+
+
+			$char	nazo[16];
+
+			for (int i = 0; i < vertexNum; i++){
+				$char	data[3*3];
+//				$DWORD	Y;
+//				$DWORD	Z;
+
+			}
+
+/*
+			shape_count = GetCurrentWord();
+			$WORD	shape_count;
+
+			for (int i = 0; i < shape_count; i++){
+				name_size = GetCurrentByte();
+				$BYTE	データ名のバイト数;
+				$BYTE	名前[name_size];
+
+				morph_count = GetCurrentWord();
+				$WORD	モーフ数;
+
+				for (int j = 0;j < morph_count; j++) {
+					name_size = GetCurrentByte();
+					$BYTE	データ名のバイト数;
+					$BYTE	名前[name_size];
+
+
+					$DWORD		かける数;
+					data_count = GetCurrentWord();
+					$WORD		データの数;
+					$BYTE	DATA[data_count * 8];
+				}
+			}
+*/
+			break;
+		default:
+			$BYTE	HEADER[4];
+			$WORD	version;
+
+	//	for (int i = 0; i < morph_count; i++){
+			name_size = GetCurrentByte();
+			$BYTE	データ名のバイト数;
+			$BYTE	名前[name_size];
+
+			$BYTE	test[2];
+
+			name_size = GetCurrentByte();
+			$BYTE	データ名のバイト数;
+			$BYTE	名前[name_size];
+
+
+			data_count = GetCurrentWord();
+			$WORD		データの数;
+	//		for (int j = 0; j < data_count; j++)
+	//		{
+	//			$WORD	頂点ID;
+	//			$float	X;
+	//			$float	Y;
+	//			$float	Z;
+	//		}
+			$BYTE	DATA[data_count * 14];
+	//	}
+			break;
+	}
+}
