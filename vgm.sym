@@ -1,9 +1,7 @@
 
-
 typedef int bool;
 const bool true=1;
 const bool false=0;
-
 
 void main(void);
 int getStrLength( int addr );
@@ -11,6 +9,7 @@ int getStrLength( int addr );
 
 main();
 return;
+
 
 void main(void) {
 	$char	ident[4];
@@ -134,7 +133,7 @@ void main(void) {
 	}
 	if (vgmVersion >= 0x171){
 
-		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	WonderSwan_clock		}
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	WonderSwan_clock;		}
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Virtual_Boy_VSU_clock;  }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	SAA1099_clock;          }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	ES5503_clock;           }
@@ -143,7 +142,7 @@ void main(void) {
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	ES5505_6_Channels;      }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	C352_Clock_Divider;     }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $char	reserved;               }
-		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Seta_X1-010_clock;      }
+		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Seta_X1_010_clock;      }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Namco_C352_clock;       }
 		if (dataBlockStartAddr > GetCurrentOffset() ){ $long	Irem_GA20_clock;        }
 
